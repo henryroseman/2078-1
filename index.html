@@ -20,6 +20,14 @@
   
   
   
+<style>
+body {
+  text-align:center;
+}
+button {
+  font-size:100%;
+}
+</style>
 
   
   
@@ -33,6 +41,7 @@
 <audio id="myAudio">
  <source src="clock tick.wav" type="audio/wav">
 </audio>
+<div><button onclick="toggleSound()" type="button">Mute/Unmute Audio</button></div>
   
   
       <script id="rendered-js" >
@@ -42,10 +51,13 @@ var radius = canvas.height / 2;
 ctx.translate(radius, radius);
 radius = radius * 0.90
 setInterval(drawClock, 1000);
+var soundOn = 1
 
 function drawClock(){
   var au = document.getElementById("myAudio");
+  if (soundOn ==1){
   au.play();
+  };
   drawFace(ctx, radius);
   drawNumbers(ctx, radius);
   drawTime(ctx, radius);
@@ -117,6 +129,15 @@ function drawHand(ctx, pos, length, width) {
   ctx.lineTo(0, -length);
   ctx.stroke();
   ctx.rotate(-pos);
+}
+
+function toggleSound() {
+  if (soundOn == 1) {
+    soundOn = 0;
+  }
+  if (soundOn == 0) {
+    soundOn = 1;
+  }
 }
     </script>
 
