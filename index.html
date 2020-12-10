@@ -30,6 +30,9 @@
 
 <body translate="no" >
   <canvas id="canvas" width="400" height="400" style="background-color:#333"></canvas>
+<audio id="myAudio">
+ <source src="clock tick.wav" type="audio/wav">
+</audio>
   
   
       <script id="rendered-js" >
@@ -41,6 +44,8 @@ radius = radius * 0.90
 setInterval(drawClock, 1000);
 
 function drawClock(){
+  var au = document.getElementById("myAudio");
+  au.play();
   drawFace(ctx, radius);
   drawNumbers(ctx, radius);
   drawTime(ctx, radius);
